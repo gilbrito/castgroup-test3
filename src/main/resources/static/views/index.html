@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registro de Pessoas</title>
+</head>
+<body ng-app="person">
+<hr/>
+<div class="container" ng-controller="PersonController">
+    <form novalidate class="simple-form">
+        <label>Nome</label> <input type="text" ng-model="personDto.name" class="input-sm spacing"/><br />
+        <label>Rua</label> <input type="text" ng-model="personDto.street" class="input-sm spacing"/><br />
+        <label>Numero</label> <input type="text" ng-model="personDto.number" class="input-sm spacing"/><br />
+        <label>Bairro</label> <input type="text" ng-model="personDto.neighborhood" class="input-sm spacing"/><br />
+        <label>Cidade</label> <input type="text" ng-model="personDto.city" class="input-sm spacing"/><br />
+        <label>Estado</label> <input type="text" ng-model="personDto.state" class="input-sm spacing"/><br />
+        <label>Celular</label> <input type="text" ng-model="personDto.cellphone" class="input-sm spacing"/><br />
+        <label>Telefone</label> <input type="text" ng-model="personDto.phone" class="input-sm spacing"/><br />
+        <button ng-click="savePerson()" class="btn btn-sm btn-info">Adicionar</button>
+    </form>
+    <table>
+        <tr >
+            <th>Nome</th>
+            <th></th>
+            <th><input type="checkbox" ng-model="allItemsSelected" ng-change="selectAll()"></th>
+        </tr>
+        <tr ng-repeat="p in allPersons">
+            <td>{{ p.name }}</td>
+            <td><button ng-click="open(p.id)" class="btn btn-sm btn-info">Mais Informacoes</button></td>
+            <td><input type="checkbox" ng-model="p.isChecked" ng-change="selectEntity()"></td>
+        </tr>
+    </table>
+    <button ng-click="deletePersonById()" class="btn btn-sm btn-info">Deletar</button>
+</div>
+</body>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/PersonController.js"></script>
+<script src="js/app/PersonDetails.js"></script>
+<script src="js/app/PersonService.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/app/app.css"/>
+</html>
